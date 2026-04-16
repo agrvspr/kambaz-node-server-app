@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const quizSchema = new mongoose.Schema({
+  _id: String,
   title: String,
   description: String,
 
@@ -8,6 +9,12 @@ const quizSchema = new mongoose.Schema({
     type: String,
     default: "Quizzes",
     enum: ["Quizzes", "Exams", "Assignments", "Projects"],
+  },
+
+  quizType: {
+    type: String,
+    default: "Graded Quiz",
+    enum: ["Graded Quiz", "Ungraded Quiz", "Practice Quiz", "Ungraded Survey"],
   },
 
   points: Number,
@@ -30,6 +37,11 @@ const quizSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+
+  published: {
+  type: Boolean,
+  default: false,
+},
 
   oneByOne: Boolean,
   webcam: Boolean,
