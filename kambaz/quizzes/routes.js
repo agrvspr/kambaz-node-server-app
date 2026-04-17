@@ -13,7 +13,7 @@ export default function QuizRoutes(app) {
   const createQuiz = async (req, res) => {
     try {
     const { courseId } = req.params;
-    const newQuiz = await dao.createQuiz({ ...req.body, courseId: courseId });
+    const newQuiz = await dao.createQuiz({ ...req.body, course: courseId });
     res.json(newQuiz);
   } catch (err) {
     res.status(500).json({ message: "Failed to create quiz" });
